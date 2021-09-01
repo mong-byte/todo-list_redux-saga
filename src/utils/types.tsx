@@ -14,3 +14,7 @@ export interface InitialTypes {
   msg: string;
   todoData: DataTypes;
 }
+
+export interface MethodType {
+  POST: string;
+}
