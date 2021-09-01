@@ -1,46 +1,15 @@
-# Getting Started with Create React App
+# Pre-onBoarding [Assignment 9] 페이워크
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 구현사항 상세
+- Typescript적용
+- React-redux를 이용한 전역상태관리
+- redux-saga를 이용한 비동기처리
+- 간단한 반응형 디자인 적용
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 구현사항 스크린샷
+![스크린샷 2021-09-01 오후 10 42 28(2)](https://user-images.githubusercontent.com/75971035/131687216-35a69c09-5351-45dd-a1ab-bdf32cf294b2.png)
+![스크린샷 2021-09-01 오후 10 43 24](https://user-images.githubusercontent.com/75971035/131687258-2594864d-7212-4e88-9bef-7dacf4ccbf21.png)
+![스크린샷 2021-09-01 오후 10 43 55](https://user-images.githubusercontent.com/75971035/131687348-4a9d4d4c-7569-45ab-be8c-8739b0023689.png)
+![스크린샷 2021-09-01 오후 10 44 03](https://user-images.githubusercontent.com/75971035/131687356-8e2b6cff-a9dd-47c6-80f3-f0d4ef3b5bf8.png)
+![스크린샷 2021-09-01 오후 10 44 38](https://user-images.githubusercontent.com/75971035/131687360-e623f022-3d4e-4822-9029-0f57a952d66b.png)
+![스크린샷 2021-09-01 오후 10 44 45](https://user-images.githubusercontent.com/75971035/131687362-55783262-bf09-40f6-96b2-6fbcd1e8cb17.png)
