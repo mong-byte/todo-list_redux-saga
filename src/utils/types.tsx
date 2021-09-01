@@ -2,7 +2,7 @@ export interface DataListType {
   id: string;
   content: string;
   isCheck: boolean;
-  createdAt: string;
+  createdAt: Date;
 }
 
 export interface DataTypes {

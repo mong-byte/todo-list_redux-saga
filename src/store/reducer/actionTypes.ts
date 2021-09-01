@@ -1,7 +1,7 @@
 import { DataTypes } from "src/utils/types";
 import { MsgType, ResultType } from "src/store/reducer/types";
 
-export interface ActionTypes {
+interface ActionTypes {
   LOAD_TODO: "LOADTODO";
   CREATE_TODO: "CREATETODO";
   MODIFY_TODO: "MODIFYTODO";
@@ -59,6 +59,7 @@ export type Action =
   | {
       type: typeof ACTION_TYPES_SUCCESS.CREATE_TODO_SUCCESS;
       payload: MsgType;
+      content: string;
     }
   | {
       type: typeof ACTION_TYPES_SUCCESS.MODIFY_TODO_SUCCESS;
