@@ -6,6 +6,7 @@ import {
   ACTION_TYPES_FAIL,
   Action,
 } from "./actionTypes";
+import { v4 as uuidv4 } from "uuid";
 
 const reducer = (state: InitialTypes = INITIAL_TODO, action: Action) => {
   const { LOAD_TODO, CREATE_TODO, MODIFY_TODO, DELETE_TODO, CHECK_TODO } =
@@ -29,13 +30,9 @@ const reducer = (state: InitialTypes = INITIAL_TODO, action: Action) => {
 
   switch (action.type) {
     case LOAD_TODO:
-      return { ...state };
     case CREATE_TODO:
-      return { ...state };
     case MODIFY_TODO:
-      return { ...state };
     case DELETE_TODO:
-      return { ...state };
     case CHECK_TODO:
       return { ...state };
     case LOAD_TODO_SUCCESS:
@@ -44,9 +41,15 @@ const reducer = (state: InitialTypes = INITIAL_TODO, action: Action) => {
         todoData: action.payload,
       };
     case CREATE_TODO_SUCCESS:
+      const newTodo = {
+        id: uuidv4(),
+        content: action.content,
+        isCheck: false,
+        createdAt: new Date(),
+      };
       return {
-        ...state,
         msg: action.payload,
+        todoList: state.todoData.todoList.concat(newTodo),
       };
     case MODIFY_TODO_SUCCESS:
       return {
@@ -89,13 +92,9 @@ const reducer = (state: InitialTypes = INITIAL_TODO, action: Action) => {
         },
       };
     case LOAD_TODO_FAIL:
-      return { ...state };
     case CREATE_TODO_FAIL:
-      return { ...state };
     case MODIFY_TODO_FAIL:
-      return { ...state };
     case DELETE_TODO_FAIL:
-      return { ...state };
     case CHECK_TODO_FAIL:
       return { ...state };
     default:
