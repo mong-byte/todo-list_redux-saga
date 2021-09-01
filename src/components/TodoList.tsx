@@ -6,6 +6,7 @@ import styled from "styled-components";
 import TodoItem from "./TodoItem";
 
 const TodoList: React.FC = () => {
+  // 전역Store에서 데이터를 받아옴
   const { todoData }: InitialTypes = useSelector(
     (state: RootState) => state.reducer
   );

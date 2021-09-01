@@ -9,6 +9,7 @@ interface ModalPropsTypes {
 const Modal: React.FC<ModalPropsTypes> = ({ noticeMsg, closeModal }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
+  // 내부 modal 영역이 아닌 외부영역을 클릭했을때 modal을 닫는 함수
   const clickOutSideModal = useCallback(
     (event: MouseEvent) => {
       const target = event.target as HTMLElement;
@@ -19,6 +20,7 @@ const Modal: React.FC<ModalPropsTypes> = ({ noticeMsg, closeModal }) => {
     [closeModal]
   );
 
+  // 윈도우 전체에 click을 감지하는 Event를 적용, 이후 cleanUp 함수 적용
   useEffect(() => {
     window.addEventListener("click", clickOutSideModal);
     return () => window.removeEventListener("click", clickOutSideModal);

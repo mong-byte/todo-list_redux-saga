@@ -4,6 +4,7 @@ import CancelIcon from "src/assets/CancelIcon";
 import { Trash } from "src/assets/DeleteIcon";
 import EditIcon from "src/assets/EditIcon";
 import { FilledStar } from "src/assets/Stars";
+
 import { actionCreater } from "src/store/reducer/actionCreater";
 import { DataListType } from "src/utils/types";
 import styled from "styled-components";
@@ -18,14 +19,17 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   const { checkTodo, deleteTodo } = actionCreater;
   const dispatch = useDispatch();
 
+  // Todo Delete를 위한 Dispatch를 보내는 함수
   const deleteTodoClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     dispatch(deleteTodo(todo.id));
   };
 
+  // Todo Check의 상태를 바꾸기 위한 Dispatch를 보내는 함수
   const checkTodoClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     dispatch(checkTodo(todo.isCheck, todo.id));
   };
 
+  // Edit을 위한 input 상태로 전환하기 위한 함수
   const toggleEditMode = () => {
     setEditMode(!editMode);
   };
@@ -33,7 +37,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   return (
     <TodoItemContainer>
       <TodoItemContent>
-        <TodoCheckBox onClick={checkTodoClick}>
+        <TodoCheckBox onClick={checkTodoClick} isChecked={todo.isCheck}>
           <FilledStar />
         </TodoCheckBox>
         {!editMode ? (
@@ -56,6 +60,10 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
 
 export default TodoItem;
 
+interface CheckBoxPropsTypes {
+  isChecked: boolean;
+}
+
 const TodoItemContainer = styled.div`
   display: flex;
   align-items: center;
@@ -72,10 +80,14 @@ const TodoItemContent = styled.div`
   align-items: center;
 `;
 
-const TodoCheckBox = styled.button`
+const TodoCheckBox = styled.button<CheckBoxPropsTypes>`
   all: unset;
   margin-left: 10px;
   cursor: pointer;
+
+  svg {
+    fill: ${(props) => (props.isChecked ? "yello" : "black")};
+  }
 `;
 
 const TodoTextBox = styled.div`

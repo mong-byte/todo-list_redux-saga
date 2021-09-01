@@ -13,6 +13,7 @@ const TodoInput: React.FC<TodoInputPropsTypes> = ({ inputOpen }) => {
   const dispatch = useDispatch();
   const { createTodo } = actionCreater;
 
+  // Input에 입력된 값을 inputText state에 업데이트
   const chageTodoText = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {
       target: { value },
@@ -20,6 +21,8 @@ const TodoInput: React.FC<TodoInputPropsTypes> = ({ inputOpen }) => {
     setInputText(value);
   };
 
+  // InputText state를 Dispatch를 사용하여 Reducer로 요청을 전달
+  // 이후 inputText state를 초기화
   const submitTodo = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 

@@ -11,9 +11,13 @@ import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 import rootReducer from "./store";
 import rootSaga from "./sagas/indes";
 
+// Redux-saga 미들웨어 생성
 const sagaMiddleware: SagaMiddleware<object> = createSagaMiddleware();
 
+// 미들웨어를 적용한 store의 생성
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+// 미들웨어 기동
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(

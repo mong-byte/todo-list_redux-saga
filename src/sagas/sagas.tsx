@@ -30,6 +30,8 @@ const {
   deleteTodoFail,
 } = actionCreaterFail;
 
+// watch에서 액션이 감지 되었을때 실행 되는 비동기함수
+// 이후 액션에 따라 Reducer로 넘어감
 function* loadTodo() {
   try {
     const result: DataTypes = yield call(() =>
@@ -42,10 +44,13 @@ function* loadTodo() {
   }
 }
 
+// Dispatch로 인해 요청이 들어오게 되면, 함수를 실행
 function* watchLoadTodo() {
   yield takeLatest(ACTION_TYPES.LOAD_TODO, loadTodo);
 }
 
+// watch에서 액션이 감지 되었을때 실행 되는 비동기함수
+// 이후 액션에 따라 Reducer로 넘어감
 function* createTodo(action: CreateType) {
   try {
     const result: MsgType = yield call(() =>
@@ -61,10 +66,13 @@ function* createTodo(action: CreateType) {
   }
 }
 
+// Dispatch로 인해 요청이 들어오게 되면, 함수를 실행
 function* watchAddTodo() {
   yield takeLatest(ACTION_TYPES.CREATE_TODO, createTodo);
 }
 
+// watch에서 액션이 감지 되었을때 실행 되는 비동기함수
+// 이후 액션에 따라 Reducer로 넘어감
 function* modifyTodo(action: ModifyTypes) {
   try {
     const result: ResultType = yield call(() =>
@@ -80,10 +88,13 @@ function* modifyTodo(action: ModifyTypes) {
   }
 }
 
+// Dispatch로 인해 요청이 들어오게 되면, 함수를 실행
 function* watchModifyTodo() {
   yield takeLatest(ACTION_TYPES.MODIFY_TODO, modifyTodo);
 }
 
+// watch에서 액션이 감지 되었을때 실행 되는 비동기함수
+// 이후 액션에 따라 Reducer로 넘어감
 function* checkTodo(action: CheckTypes) {
   try {
     const result: MsgType = yield call(() =>
@@ -99,10 +110,13 @@ function* checkTodo(action: CheckTypes) {
   }
 }
 
+// Dispatch로 인해 요청이 들어오게 되면, 함수를 실행
 function* watchCheckTodo() {
   yield takeLatest(ACTION_TYPES.CHECK_TODO, checkTodo);
 }
 
+// watch에서 액션이 감지 되었을때 실행 되는 비동기함수
+// 이후 액션에 따라 Reducer로 넘어감
 function* deleteTodo(action: DeleteTypes) {
   try {
     const result: MsgType = yield call(() =>
@@ -117,10 +131,12 @@ function* deleteTodo(action: DeleteTypes) {
   }
 }
 
+// Dispatch로 인해 요청이 들어오게 되면, 함수를 실행
 function* watchDeleteTodo() {
   yield takeLatest(ACTION_TYPES.DELETE_TODO, deleteTodo);
 }
 
+// saga에 각 액션을 등록
 export default function* todoSaga() {
   yield all([
     fork(watchLoadTodo),

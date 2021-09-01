@@ -12,6 +12,7 @@ import {
   ResultType,
 } from "./types";
 
+// Dispatch를 하기 위한 요청 Action 생성함수 집합
 export const actionCreater: CreaterTypes = {
   loadTodo: () => ({ type: ACTION_TYPES.LOAD_TODO }),
   createTodo: (content) => ({ type: ACTION_TYPES.CREATE_TODO, content }),
@@ -24,6 +25,7 @@ export const actionCreater: CreaterTypes = {
   deleteTodo: (id) => ({ type: ACTION_TYPES.DELETE_TODO, id }),
 };
 
+// 비동기 요청이 성공했을때 사용되는 Action 생성함수의 집합
 export const actionCreaterSuccess: CreaterSuccessType = {
   loadTodoSuccess: (result: DataTypes) => ({
     type: ACTION_TYPES_SUCCESS.LOAD_TODO_SUCCESS,
@@ -51,6 +53,7 @@ export const actionCreaterSuccess: CreaterSuccessType = {
   }),
 };
 
+// 비동기 요청이 실패했을때 사용되는 Action 생성함수의 집합
 export const actionCreaterFail: CreaterFailType = {
   loadTodoFail: (error: unknown) => ({
     type: ACTION_TYPES_FAIL.LOAD_TODO_FAIL,
