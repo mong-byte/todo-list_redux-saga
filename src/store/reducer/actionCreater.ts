@@ -29,9 +29,10 @@ export const actionCreaterSuccess: CreaterSuccessType = {
     type: ACTION_TYPES_SUCCESS.LOAD_TODO_SUCCESS,
     payload: result,
   }),
-  createTodoSuccess: (result: MsgType) => ({
+  createTodoSuccess: (result: MsgType, content: string) => ({
     type: ACTION_TYPES_SUCCESS.CREATE_TODO_SUCCESS,
     payload: result,
+    content,
   }),
   modifyTodoSuccess: (result: ResultType, id: string) => ({
     type: ACTION_TYPES_SUCCESS.MODIFY_TODO_SUCCESS,

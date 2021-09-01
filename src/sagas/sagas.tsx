@@ -1,5 +1,5 @@
-import { call, put, takeLatest, delay, all, fork } from "redux-saga/effects";
-import { BASE_URL, MOCK_URL, URL_TODO } from "src/utils/constants";
+import { call, put, takeLatest, all, fork } from "redux-saga/effects";
+import { API_METHOD, BASE_URL, URL_TODO } from "src/utils/constants";
 import { DataTypes } from "src/utils/types";
 import { ACTION_TYPES } from "../store/reducer/actionTypes";
 import {
@@ -33,9 +33,8 @@ const {
 function* loadTodo() {
   try {
     const result: DataTypes = yield call(() =>
-      fetch(`${MOCK_URL}`).then((response) => response.json())
+      fetch(`${BASE_URL}${URL_TODO}`).then((response) => response.json())
     );
-    yield delay(1000);
     yield put(loadTodoSuccess(result));
   } catch (error: unknown) {
     yield put(loadTodoFail(error));
@@ -51,12 +50,11 @@ function* createTodo(action: CreateType) {
   try {
     const result: MsgType = yield call(() =>
       fetch(`${BASE_URL}${URL_TODO}`, {
-        method: "POST",
+        method: API_METHOD.POST,
         body: JSON.stringify(action.content),
       }).then((response) => response.json())
     );
-    yield delay(1000);
-    yield put(createTodoSuccess(result));
+    yield put(createTodoSuccess(result, action.content));
   } catch (error: unknown) {
     yield put(createTodoFail(error));
     console.log(error);
@@ -71,11 +69,10 @@ function* modifyTodo(action: ModifyTypes) {
   try {
     const result: ResultType = yield call(() =>
       fetch(`${BASE_URL}${URL_TODO}/${action.id}`, {
-        method: "POST",
+        method: API_METHOD.POST,
         body: JSON.stringify({ content: action.content }),
       }).then((response) => response.json())
     );
-    yield delay(1000);
     yield put(modifyTodoSuccess(result, action.id));
   } catch (error: unknown) {
     yield put(modifyTodoFail(error));
@@ -91,11 +88,10 @@ function* checkTodo(action: CheckTypes) {
   try {
     const result: MsgType = yield call(() =>
       fetch(`${BASE_URL}${URL_TODO}/${action.id}`, {
-        method: "POST",
+        method: API_METHOD.POST,
         body: JSON.stringify({ isCheck: action.isCheck }),
       }).then((response) => response.json())
     );
-    yield delay(1000);
     yield put(checkTodoSuccess(result, action.id));
   } catch (error: unknown) {
     yield put(checkTodoFail(error));
@@ -111,10 +107,9 @@ function* deleteTodo(action: DeleteTypes) {
   try {
     const result: MsgType = yield call(() =>
       fetch(`${BASE_URL}${URL_TODO}/${action.id}`, {
-        method: "POST",
+        method: API_METHOD.POST,
       }).then((response) => response.json())
     );
-    yield delay(1000);
     yield put(deleteTodoSuccess(result, action.id));
   } catch (error: unknown) {
     yield put(deleteTodoFail(error));

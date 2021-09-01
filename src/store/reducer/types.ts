@@ -75,9 +75,13 @@ export interface CreaterSuccessType {
     type: typeof ACTION_TYPES_SUCCESS.LOAD_TODO_SUCCESS;
     payload: DataTypes;
   };
-  createTodoSuccess: (result: MsgType) => {
+  createTodoSuccess: (
+    result: MsgType,
+    content: string
+  ) => {
     type: typeof ACTION_TYPES_SUCCESS.CREATE_TODO_SUCCESS;
     payload: MsgType;
+    content: string;
   };
   modifyTodoSuccess: (
     result: ResultType,
