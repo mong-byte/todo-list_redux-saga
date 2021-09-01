@@ -8,6 +8,8 @@ import {
 } from "./actionTypes";
 import { v4 as uuidv4 } from "uuid";
 
+// 각각 Action에 맞는 작동을 제어하기 위한 Reducer
+// 미들웨어를 통과후 성공/실패등의 액션에 따른 처리로직 집합
 const reducer = (state: InitialTypes = INITIAL_TODO, action: Action) => {
   const { LOAD_TODO, CREATE_TODO, MODIFY_TODO, DELETE_TODO, CHECK_TODO } =
     ACTION_TYPES;
@@ -45,7 +47,7 @@ const reducer = (state: InitialTypes = INITIAL_TODO, action: Action) => {
         id: uuidv4(),
         content: action.content,
         isCheck: false,
-        createdAt: new Date(),
+        createdAt: new Date().toISOString(),
       };
       return {
         msg: action.payload,

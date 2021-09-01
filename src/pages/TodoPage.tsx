@@ -14,20 +14,24 @@ const TodoPage: React.FC = () => {
   const dispatch = useDispatch();
   const { msg } = useSelector((state: RootState) => state.reducer);
 
+  // 최초 로딩시 Dispatch를 사용하여 데이터를 받아옴
   useEffect(() => {
     dispatch(loadTodo());
   }, [dispatch, loadTodo]);
 
+  // 받아온 데이터에서 msg가 있을경우, noticeMsg를 업데이트
   useEffect(() => {
     if (msg) {
       setNoticeMsg(msg);
     }
   }, [msg]);
 
+  // 닫기, 모달 외부영역을 클릭했을때 noticeMsg를 초기화
   const closeModal = useCallback(() => {
     setNoticeMsg("");
   }, [setNoticeMsg]);
 
+  // 반응형 디자인에서 input을 열거나 닫는곳에 사용 되는 함수
   const toggleMoblieOpen = () => {
     setInputOpen(!inputOpen);
   };
